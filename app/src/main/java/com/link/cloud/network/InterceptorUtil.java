@@ -28,7 +28,7 @@ public class InterceptorUtil {
             public void log(String message) {
                 Logger.e(TAG+message);
             }
-        }).setLevel(HttpLoggingInterceptor.Level.HEADERS);
+        }).setLevel(HttpLoggingInterceptor.Level.BODY);
     }
 
     public static Interceptor HeaderInterceptor(){
