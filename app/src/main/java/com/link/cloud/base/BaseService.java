@@ -1,6 +1,9 @@
 package com.link.cloud.base;
 import com.google.gson.JsonObject;
-import com.link.cloud.bean.DownLoadData;
+import com.link.cloud.bean.DownLoadDataBean;
+
+import java.util.ArrayList;
+
 import io.reactivex.Observable;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
@@ -16,6 +19,6 @@ public interface BaseService {
      * @return
      */
     @POST("syncUserFeature")
-    Observable<BaseEntity<DownLoadData>> syncUserFeature(@Body JsonObject params);
+    Observable<BaseEntity<ArrayList<DownLoadDataBean>>> syncUserFeature(@Body JsonObject params);
 
 }

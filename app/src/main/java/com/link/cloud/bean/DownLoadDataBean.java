@@ -1,24 +1,13 @@
 package com.link.cloud.bean;
 
-import java.util.List;
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
 /**
- * Created by OFX002 on 2018/7/19.
+ * Created by 49488 on 2018/7/19.
  */
 
-public class DownLoadData {
-
-    private List<DataBean> data;
-
-    public List<DataBean> getData() {
-        return data;
-    }
-
-    public void setData(List<DataBean> data) {
-        this.data = data;
-    }
-
-    public static class DataBean {
+    public class DownLoadDataBean extends RealmObject {
         /**
          * uid : ncmchbv9n58
          * shopId : 0xj13ti_0000zd
@@ -28,7 +17,8 @@ public class DownLoadData {
          * fingerId : 6
          * deviceId : pmljt8z
          */
-
+        @PrimaryKey
+        private int id;
         private String uid;
         private String shopId;
         private String userName;
@@ -43,6 +33,13 @@ public class DownLoadData {
 
         public void setUid(String uid) {
             this.uid = uid;
+        }
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
         }
 
         public String getShopId() {
@@ -93,4 +90,4 @@ public class DownLoadData {
             this.deviceId = deviceId;
         }
     }
-}
+

@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'realm-android'
 android {
     compileSdkVersion 25
     defaultConfig {
@@ -18,7 +18,9 @@ android {
     }
 }
 
-
+realm {
+    syncEnabled = true;
+}
 configurations.all {
     resolutionStrategy.force 'com.android.support:support-annotations:25.4.0'
 }
@@ -39,4 +41,5 @@ dependencies {
     compile 'com.android.support:design:25+'
     compile 'com.github.dmytrodanylyk.shadow-layout:library:1.0.3'
     compile 'com.orhanobut:logger:1.15'
+
 }

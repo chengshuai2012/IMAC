@@ -6,6 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
+
+
 /**
  * Created by OFX002 on 2018/7/19.
  */
@@ -16,6 +20,9 @@ public class App extends Application{
     @Override
     public void onCreate() {
         super.onCreate();
+        Realm.init(this);
+        RealmConfiguration config = new RealmConfiguration.Builder().name("myrealm.realm").build();
+        Realm.setDefaultConfiguration(config);
         this.registerActivityLifecycleCallbacks(new Application.ActivityLifecycleCallbacks() {
             @Override
             public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
