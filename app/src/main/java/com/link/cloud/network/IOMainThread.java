@@ -13,7 +13,7 @@ import io.reactivex.schedulers.Schedulers;
  */
 
 public class IOMainThread {
-    public static <T>ObservableTransformer<T,T> compose(){
+    public static <T>ObservableTransformer<T,T> composeIO2main(){
         return new ObservableTransformer<T, T>() {
             @Override
             public ObservableSource<T> apply(Observable<T> upstream) {
@@ -28,5 +28,19 @@ public class IOMainThread {
             }
         };
     }
+    public static <T>ObservableTransformer<T,T> composeMain2IO(){
+        return new ObservableTransformer<T, T>() {
+            @Override
+            public ObservableSource<T> apply(Observable<T> upstream) {
+                return upstream.subscribeOn(AndroidSchedulers.mainThread())
+                        .doOnSubscribe(new Consumer<Disposable>() {
+                            @Override
+                            public void accept(Disposable disposable) throws Exception {
 
+                            }
+                        })
+                        .observeOn(Schedulers.io());
+            }
+        };
+    }
 }

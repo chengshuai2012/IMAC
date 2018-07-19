@@ -30,11 +30,11 @@ public class MainPresenter implements MainContract.Presenter {
         }
         RetrofitFactory.getInstence().API()
                 .syncUserFeature(params)
-                .compose(IOMainThread.<BaseEntity<DownLoadData>>compose())
+                .compose(IOMainThread.<BaseEntity<DownLoadData>>composeIO2main())
                 .subscribe(new BaseObserver<DownLoadData>() {
                     @Override
                     protected void onSuccees(BaseEntity<DownLoadData> t) throws Exception {
-                        view.SyncSuccess(t);
+                        view.SyncSuccess();
                     }
 
                     @Override

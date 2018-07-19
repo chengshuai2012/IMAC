@@ -1,11 +1,9 @@
 package com.link.cloud.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.link.cloud.R;
-import com.link.cloud.base.BaseEntity;
-import com.link.cloud.bean.DownLoadData;
 import com.link.cloud.contract.MainContract;
 import com.link.cloud.presenter.MainPresenter;
 
@@ -20,7 +18,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     }
 
     @Override
-    public void SyncSuccess(BaseEntity<DownLoadData> downLoadData) {
+    public void SyncSuccess() {
 
     }
 
