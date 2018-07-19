@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">智能一体机</string>
     <string name="deviceID">请输入设备ID：</string>
