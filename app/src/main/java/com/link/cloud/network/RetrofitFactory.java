@@ -18,6 +18,7 @@ public class RetrofitFactory {
     private static BaseService mBaseService;
     private RetrofitFactory(){
         OkHttpClient mOkHttpClient=new OkHttpClient.Builder()
+                .retryOnConnectionFailure(false)
                 .connectTimeout(HttpConfig.HTTP_TIME, TimeUnit.SECONDS)
                 .readTimeout(HttpConfig.HTTP_TIME, TimeUnit.SECONDS)
                 .writeTimeout(HttpConfig.HTTP_TIME, TimeUnit.SECONDS)

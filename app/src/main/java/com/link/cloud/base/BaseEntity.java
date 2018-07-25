@@ -1,27 +1,22 @@
 package com.link.cloud.base;
 
-/**
- * @author yemao
- * @date 2017/4/9
- * @description 解析实体基类!
- */
+import java.util.ArrayList;
 
 public class BaseEntity<T> {
-    private static int SUCCESS_CODE=0;//成功的code
-    private int code;
+    private static int SUCCESS_CODE=0;
+    private int status;
     private String msg;
     private T data;
-
 
     public boolean isSuccess(){
         return getCode()==SUCCESS_CODE;
     }
     public int getCode() {
-        return code;
+        return status;
     }
 
     public void setCode(int code) {
-        this.code = code;
+        this.status = status;
     }
 
     public String getMsg() {

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    >
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/bind_review"
+        android:layout_width="501dp"
+        android:layout_height="304dp"
+        android:layout_gravity="center_horizontal"
+        android:clickable="true"
+
+        >
+
+    </android.support.v7.widget.RecyclerView>
+    <LinearLayout
+        android:layout_gravity="center"
+        android:layout_marginTop="110dp"
+        android:layout_width="400dp"
+        android:layout_height="65dp"
+        android:gravity="center"
+        android:background="@drawable/card_border"
+        >
+        <TextView
+            style="@style/TextViewWhite"
+            android:text="会员卡号"
+            android:textSize="@dimen/text_size_34sp"
+            />
+    </LinearLayout>
+</LinearLayout>

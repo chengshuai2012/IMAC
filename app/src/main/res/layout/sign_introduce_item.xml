@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="91dp"
+    android:paddingRight="91dp"
+    android:paddingTop="75dp"
+    android:paddingBottom="30dp"
+    >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center"
+    >
+<ImageView
+  style="@style/ImageSize"
+    android:src="@drawable/finger_front"
+    />
+    <ImageView
+        style="@style/ImageSize"
+        android:layout_marginLeft="30dp"
+        android:src="@drawable/finger_side"
+        />
+</LinearLayout>
+    <LinearLayout
+        android:layout_gravity="center"
+        android:layout_marginTop="75dp"
+        android:layout_width="400dp"
+        android:layout_height="65dp"
+        android:gravity="center"
+        android:background="@drawable/card_border"
+        >
+    <TextView
+        style="@style/TextViewWhite"
+        android:text="操作提示"
+        android:textSize="@dimen/text_size_34sp"
+        />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/choose_bg"
+    android:orientation="vertical">
+
+    <include layout="@layout/top_layout" />
+
+    <ImageView
+        android:layout_width="240dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/choose_way" />
+
+    <ImageView
+        android:id="@+id/venue_sign"
+        style="@style/ImageSize"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/venue_sign" />
+
+    <ImageView
+        android:id="@+id/face_sign"
+        style="@style/ImageSize"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/face_sign" />
+
+    <ImageView
+        android:id="@+id/scan_sign"
+        style="@style/ImageSize"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/scan_sign" />
+</LinearLayout>

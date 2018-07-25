@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+  <include
+      android:id="@+id/top"
+      layout="@layout/top_layout"/>
+
+
+    <TextView
+        android:id="@+id/welcome"
+        style="@style/TextViewWhite"
+        android:layout_below="@+id/top"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="欢迎体验智能场馆自助服务"
+        android:textSize="@dimen/text_size_34sp" />
+
+    <View
+        android:id="@+id/gray_horizontal"
+        android:layout_width="30dp"
+        android:layout_height="5dp"
+        android:layout_below="@+id/welcome"
+        android:layout_centerHorizontal="true"
+        android:background="@color/gray" />
+
+    <TextView
+        android:id="@+id/english_welcome_up"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/gray_horizontal"
+        android:layout_centerHorizontal="true"
+        android:text="Welcome To Experience The"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/text_size_24sp" />
+
+    <TextView
+        android:id="@+id/english_welcome_down"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/english_welcome_up"
+        android:layout_centerHorizontal="true"
+        android:text="Smart Venue Self-service"
+        android:textColor="@color/gray"
+        android:textSize="@dimen/text_size_24sp" />
+
+    <LinearLayout
+        android:id="@+id/function_image"
+        android:layout_marginTop="35dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/english_welcome_down"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/sign"
+                style="@style/ImageSize"
+                android:src="@drawable/sign" />
+
+            <ImageView
+                android:id="@+id/finish_class"
+                style="@style/ImageSize"
+                android:layout_marginLeft="70dp"
+                android:src="@drawable/finish_class" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="35dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/go_to_class"
+                style="@style/ImageSize"
+                android:src="@drawable/go_to_class" />
+
+            <ImageView
+                android:id="@+id/pay_count"
+                style="@style/ImageSize"
+                android:layout_marginLeft="70dp"
+                android:src="@drawable/pay_count" />
+
+        </LinearLayout>
+    </LinearLayout>
+    <TextView
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/function_image"
+        style="@style/TextViewWhite"
+        android:textSize="@dimen/text_size_34sp"
+        android:text="添加人脸识别"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:id="@+id/face_add"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/border_white"
+        />
+    <TextView
+        android:id="@+id/venue_add"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/face_add"
+        style="@style/TextViewWhite"
+        android:textSize="@dimen/text_size_34sp"
+        android:text="添加指静脉"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="70dp"
+        android:paddingRight="70dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/border_change"
+        />
+</RelativeLayout>

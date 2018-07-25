@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/choose_bg"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.moxun.tagcloudlib.view.TagCloudView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/global"
+        android:layout_margin="10dp"
+        app:autoScrollMode="uniform"
+        app:darkColor="@color/colorPrimary"
+        app:lightColor="@color/colorAccent"
+        />
+</LinearLayout>

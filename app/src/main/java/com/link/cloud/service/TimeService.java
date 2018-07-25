@@ -9,7 +9,7 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-import com.link.cloud.activity.MainActivity;
+import com.link.cloud.activity.SplashActivity;
 import com.link.cloud.base.App;
 
 /**
@@ -36,7 +36,7 @@ public class TimeService extends Service{
         public void onReceive(Context context, Intent intent) {
             Log.e("onReceive: ","count"+count );
             if (intent.getAction().equals(Intent.ACTION_TIME_TICK)&&count==0) {
-                Intent sayHelloIntent = new Intent(context, MainActivity.class);
+                Intent sayHelloIntent = new Intent(context, SplashActivity.class);
                 sayHelloIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(sayHelloIntent);
             }
