@@ -1,5 +1,6 @@
 package com.link.cloud.activity;
 
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -8,9 +9,7 @@ import com.link.cloud.R;
 import com.link.cloud.base.BaseActivity;
 import com.link.cloud.contract.SplashContract;
 import com.link.cloud.presenter.SplashPresenter;
-
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class SplashActivity extends BaseActivity implements SplashContract.View {
     @BindView(R.id.sync_progress)
@@ -22,7 +21,6 @@ public class SplashActivity extends BaseActivity implements SplashContract.View 
         super.onCreate(savedInstanceState);
         presenter = new SplashPresenter(this);
         presenter.getSyncData("");
-
     }
 
     @Override

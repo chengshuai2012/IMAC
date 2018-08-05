@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <EditText
+        android:layout_width="480dp"
+        android:layout_height="60dp"
+        android:background="@drawable/border_white_small_corner"
+        android:hint="请输入手机号"
+        android:layout_gravity="center"
+        android:id="@+id/edit_phone_num"
+        android:textSize="@dimen/text_size_34sp"
+        android:gravity="center"
+        />
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_width="480dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:background="@color/black"
+        >
+
+<GridView
+    android:layout_marginTop="40dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/key_bord"
+    android:numColumns="3"
+    android:verticalSpacing="30dp"
+    ></GridView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="40dp"
+        android:id="@+id/bind_first_button"
+        android:layout_marginBottom="40dp"
+        >
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="@drawable/border_white"
+            android:textSize="@dimen/text_size_34sp"
+            android:textColor="@color/white"
+            android:text="返回"
+            android:id="@+id/bind_back"
+            />
+        <TextView
+            android:layout_marginLeft="30dp"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="@drawable/corner_change_purple"
+            android:textSize="@dimen/text_size_34sp"
+            android:textColor="@color/white"
+            android:text="下一步60S"
+            android:id="@+id/bind_next"
+            />
+    </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

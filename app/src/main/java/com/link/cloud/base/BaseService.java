@@ -2,6 +2,7 @@ package com.link.cloud.base;
 import com.google.gson.JsonObject;
 import com.link.cloud.bean.BindUserInfo;
 import com.link.cloud.bean.DownLoadDataBean;
+import com.link.cloud.bean.RegisterBean;
 
 import java.util.ArrayList;
 
@@ -28,6 +29,15 @@ public interface BaseService {
 //    @POST("getMemInfoByVeinDeviceIDPhone")
 //    Observable<Member> getMemInfo( @Body JsonObject params);
     @POST("validationUser")
-    Observable<BaseEntity<BindUserInfo>> getMemInfo(@Body JsonObject params);
+    Observable<BaseEntity<BindUserInfo>> getMemInfo(@Body JsonObject params);    /**
+     * 根据设备ID和手机号查询会员信息
+     *
+     * @param params REQUEST BODY请求体
+     * @return Observable<Member>
+     */
+//    @POST("getMemInfoByVeinDeviceIDPhone")
+//    Observable<Member> getMemInfo( @Body JsonObject params);
+    @POST("deviceRegister")
+    Observable<BaseEntity<RegisterBean>> registerDevice(@Body JsonObject params);
 
 }

@@ -41,14 +41,14 @@ public class SplashPresenter implements SplashContract.Presenter {
                         Logger.e("start"+t.getData().size()+">>>>>>");
                         long l = System.currentTimeMillis();
                         Realm mRealm=Realm.getDefaultInstance();
-                        Number id = mRealm.where(DownLoadDataBean.class).max("id");
+                        final Number id = mRealm.where(DownLoadDataBean.class).max("id");
                         Logger.e(id+"" );
                         mRealm.executeTransactionAsync(new Realm.Transaction() {
                             @Override
                             public void execute(Realm realm) {
                                 for (int x = 0; x < t.getData().size(); x++) {
                                     DownLoadDataBean downLoadDataBean = t.getData().get(x);
-                                    downLoadDataBean.setId(x);
+                                    downLoadDataBean.setId(id.intValue()+x);
                                     realm.copyToRealm(downLoadDataBean);
                                 }
                             }

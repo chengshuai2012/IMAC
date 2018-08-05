@@ -68,23 +68,17 @@ public class SignVenueActivity extends BaseActivity implements ViewPager.OnPageC
         return R.layout.activity__sign_venue;
 
     }
-    @OnClick({R.id.sign_next})
+    @OnClick({R.id.sign_next,R.id.sign_back})
     public void OnClick(View view){
         switch (view.getId()){
             case R.id.sign_next:
                 int currentItem = signViewpager.getCurrentItem();
                 signViewpager.setCurrentItem(currentItem+1);
                 break;
-            case R.id.go_to_class:
-                if (MyUtils.isFastClick()) {
-                    startAcivity(GoToClassActivity.class);
-                }
+            case R.id.sign_back:
+               finish();
                 break;
-            case R.id.venue_add:
-                if (MyUtils.isFastClick()) {
-                    startAcivity(AddVenueActivity.class);
-                }
-                break;
+
         }
     }
 

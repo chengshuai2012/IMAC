@@ -4,12 +4,15 @@ import android.app.Application;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.gson.reflect.TypeToken;
 import com.link.cloud.base.App;
 import com.orhanobut.logger.Logger;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
 import java.security.MessageDigest;
@@ -24,6 +27,45 @@ import java.util.regex.Pattern;
  */
 
 public class MyUtils {
+    public static String getMac(){
+        String result = "";
+        String Mac = "";
+        result = callCmd("busybox ifconfig","HWaddr");
+        //如果返回的result == null，则说明网络不可取
+        if(result==null){
+            return "网络出错，请检查网络";
+        }
+        //对该行数据进行解析
+        //例如：eth0      Link encap:Ethernet  HWaddr 00:16:E8:3E:DF:67
+        if(result.length()>0 && result.contains("HWaddr")==true){
+            Mac = result.substring(result.indexOf("HWaddr")+6, result.length()-1);
+            Log.i("test","Mac:"+Mac+" Mac.length: "+Mac.length());
+            result = Mac;
+            Log.i("test",result+" result.length: "+result.length());
+        }
+        return result;
+    }
+
+    private static String callCmd(String cmd,String filter) {
+        String result = "";
+        String line = "";
+        try {
+            Process proc = Runtime.getRuntime().exec(cmd);
+            InputStreamReader is = new InputStreamReader(proc.getInputStream());
+            BufferedReader br = new BufferedReader(is);
+            //执行命令cmd，只取结果中含有filter的这一行
+            while ((line = br.readLine ()) != null && line.contains(filter)== false) {
+                //result += line;
+                Log.i("test","line: "+line);
+            }
+            result = line;
+            Log.i("test","result: "+result);
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
     /**
      * 获取版本号名称
      *
