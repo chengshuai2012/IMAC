@@ -7,14 +7,12 @@ import android.content.pm.PackageManager;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.google.gson.reflect.TypeToken;
 import com.link.cloud.base.App;
 import com.orhanobut.logger.Logger;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Type;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
@@ -27,6 +25,21 @@ import java.util.regex.Pattern;
  */
 
 public class MyUtils {
+    public static byte[] hexStringToByte(String hex) {
+        int len = (hex.length() / 2);
+        byte[] result = new byte[len];
+        char[] achar = hex.toCharArray();
+        for (int i = 0; i < len; i++) {
+            int pos = i * 2;
+            result[i] = (byte) (toByte(achar[pos]) << 4 | toByte(achar[pos + 1]));
+        }
+        return result;
+    }
+    private static byte toByte(char c) {
+        byte b = (byte) "0123456789ABCDEF".indexOf(c);
+        return b;
+    }
+
     public static String getMac(){
         String result = "";
         String Mac = "";

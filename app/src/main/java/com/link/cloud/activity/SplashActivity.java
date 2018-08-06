@@ -25,7 +25,7 @@ public class SplashActivity extends BaseActivity implements SplashContract.View 
 
     @Override
     public void SyncSuccess() {
-        showToast("同步成功");
+        showToast(getString(R.string.sync_success));
         syncProgress.setVisibility(View.GONE);
         startAcivity(EntranceActivity.class);
     }
@@ -40,7 +40,7 @@ public class SplashActivity extends BaseActivity implements SplashContract.View 
     @Override
     public void NetWorkError(Boolean isNet, Throwable e) {
         if (isNet) {
-            showToast("网络连接异常,请检查设备网络");
+            showToast(getString(R.id.net_error));
         } else {
             showToast(e.getMessage());
         }

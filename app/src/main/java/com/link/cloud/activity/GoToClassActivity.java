@@ -1,5 +1,6 @@
 package com.link.cloud.activity;
 
+import com.link.cloud.R;
 import com.link.cloud.base.BaseActivity;
 
 /**
@@ -14,6 +15,6 @@ public class GoToClassActivity extends BaseActivity {
 
     @Override
     protected int getLayoutID() {
-        return 0;
+        return R.layout.go_to_class_activity;
     }
 }

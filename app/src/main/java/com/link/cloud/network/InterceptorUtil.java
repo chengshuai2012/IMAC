@@ -36,15 +36,15 @@ public class InterceptorUtil {
             @Override
             public Response intercept(Chain chain) throws IOException {
                 Request mRequest=chain.request();
+                JsonObject postBody = bodyToJsonObject(mRequest.body());
+                if (postBody == null) {
+                    return chain.proceed(mRequest);
+                }
                 String code = "link";
                 String datetime = "1512028642184";
                 String key ="848ec6fa44ac6bae";
                 String sign = "cc5224ee3e9f2e2089624f676d840524";
                 Request.Builder requestBuilder = mRequest.newBuilder();
-                JsonObject postBody = bodyToJsonObject(mRequest.body());
-                if (postBody == null) {
-                    postBody = new JsonObject();
-                }
                 postBody.addProperty("key", key);
                 postBody.addProperty("datetime", datetime);
                 postBody.addProperty("code", code);

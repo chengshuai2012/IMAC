@@ -33,7 +33,7 @@
         >
     <TextView
         style="@style/TextViewWhite"
-        android:text="操作提示"
+        android:text="@string/introduce_tips"
         android:textSize="@dimen/text_size_34sp"
         android:id="@+id/info_model"
         />

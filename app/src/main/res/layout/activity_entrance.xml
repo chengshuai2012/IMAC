@@ -16,7 +16,7 @@
         android:layout_below="@+id/top"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        android:text="欢迎体验智能场馆自助服务"
+        android:text="@string/welcome"
         android:textSize="@dimen/text_size_34sp" />
 
     <View
@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/gray_horizontal"
         android:layout_centerHorizontal="true"
-        android:text="Welcome To Experience The"
+        android:text="@string/welcome_top_en"
         android:textColor="@color/gray"
         android:textSize="@dimen/text_size_24sp" />
 
@@ -43,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/english_welcome_up"
         android:layout_centerHorizontal="true"
-        android:text="Smart Venue Self-service"
+        android:text="@string/welcome_middle_en"
         android:textColor="@color/gray"
         android:textSize="@dimen/text_size_24sp" />
 
@@ -108,7 +108,7 @@
         android:layout_below="@+id/function_image"
         style="@style/TextViewWhite"
         android:textSize="@dimen/text_size_34sp"
-        android:text="添加人脸识别"
+        android:text="@string/add_face_identify"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
         android:paddingLeft="50dp"
@@ -123,7 +123,7 @@
         android:layout_below="@+id/face_add"
         style="@style/TextViewWhite"
         android:textSize="@dimen/text_size_34sp"
-        android:text="添加指静脉"
+        android:text="@string/add_venue"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
         android:paddingLeft="70dp"

@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/choose_bg"
     android:orientation="vertical">
-
     <include layout="@layout/top_layout" />
 
 
@@ -60,25 +59,25 @@
             >
             <TextView
                 style="@style/WhiteScale"
-                android:text="请输入手机号"
+                android:text="@string/input_phone_number"
                 android:textSize="@dimen/text_size_24sp"
                 android:gravity="center"
                 />
             <TextView
                 style="@style/WhiteScale"
-                android:text="放置手指"
+                android:text="@string/input_finger"
                 android:textSize="@dimen/text_size_24sp"
                 android:gravity="center"
                 />
             <TextView
                 style="@style/WhiteScale"
-                android:text="选择会员卡"
+                android:text="@string/choose_number_card"
                 android:textSize="@dimen/text_size_24sp"
                 android:gravity="center"
                 />
             <TextView
                 style="@style/WhiteScale"
-                android:text="完成"
+                android:text="@string/finish"
                 android:textSize="@dimen/text_size_24sp"
                 android:gravity="center"
                 />
@@ -112,7 +111,7 @@
     android:background="@drawable/border_white"
     android:textSize="@dimen/text_size_34sp"
     android:textColor="@color/white"
-    android:text="返回"
+    android:text="@string/back"
     android:id="@+id/bind_back"
     />
     <TextView
@@ -123,7 +122,7 @@
         android:background="@drawable/corner_change_purple"
         android:textSize="@dimen/text_size_34sp"
         android:textColor="@color/white"
-        android:text="下一步60S"
+        android:text="@string/next"
         android:id="@+id/bind_next"
         />
 </LinearLayout>

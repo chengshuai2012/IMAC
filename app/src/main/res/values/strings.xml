@@ -1,4 +1,21 @@
 <resources>
     <string name="app_name">智能一体机</string>
     <string name="sync">同步数据中,请稍后</string>
+    <string name="input_phone_number">请输入手机号</string>
+    <string name="input_finger">放置手指</string>
+    <string name="choose_number_card">选择会员卡</string>
+    <string name="finish">完成</string>
+    <string name="back">返回</string>
+    <string name="next">下一步</string>
+    <string name="welcome">欢迎体验智能场馆自助服务</string>
+    <string name="welcome_top_en">Welcome To Experience The</string>
+    <string name="welcome_middle_en">Smart Venue Self-service</string>
+    <string name="add_face_identify">添加人脸识别</string>
+    <string name="add_venue">添加指静脉</string>
+    <string name="number_card">会员卡号</string>
+    <string name="introduce_tips">操作提示</string>
+    <string name="sync_success">同步成功</string>
+    <string name="net_error">网络连接异常,请检查设备网络</string>
+    <string name="clear_all">清空</string>
+    <string name="clear_before">回删</string>
 </resources>

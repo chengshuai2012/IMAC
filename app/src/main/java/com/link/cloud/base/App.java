@@ -2,15 +2,9 @@ package com.link.cloud.base;
 
 import android.app.Activity;
 import android.app.Application;
-import android.app.Service;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.ServiceConnection;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.IBinder;
-import android.os.Message;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -18,24 +12,15 @@ import com.alibaba.sdk.android.push.CloudPushService;
 import com.alibaba.sdk.android.push.CommonCallback;
 import com.alibaba.sdk.android.push.noonesdk.PushServiceFactory;
 import com.link.cloud.activity.SplashActivity;
-import com.link.cloud.bean.MdDevice;
 import com.link.cloud.bean.RegisterBean;
 import com.link.cloud.contract.AppContract;
 import com.link.cloud.presenter.AppPresenter;
-import com.link.cloud.service.MdUsbService;
 import com.link.cloud.utils.MyUtils;
 import com.link.cloud.utils.VenueUtils;
 import com.orhanobut.logger.Logger;
-import com.tencent.bugly.crashreport.CrashReport;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
 
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
-import md.com.sdk.MicroFingerVein;
 
 
 /**
@@ -169,7 +154,7 @@ public class App extends Application implements AppContract.View{
 
     @Override
     public void registerDeviceSuccess(BaseEntity<RegisterBean> t) {
-        Toast.makeText(this,"注册成功",Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this,"注册成功",Toast.LENGTH_SHORT).show();
     }
 
 }

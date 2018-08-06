@@ -12,7 +12,6 @@ import android.os.IBinder;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -26,23 +25,17 @@ import com.link.cloud.base.BaseEntity;
 import com.link.cloud.bean.BindUserInfo;
 import com.link.cloud.bean.MdDevice;
 import com.link.cloud.contract.BindContract;
-import com.link.cloud.network.IOMainThread;
 import com.link.cloud.presenter.BindPresenter;
 import com.link.cloud.service.MdUsbService;
-import com.link.cloud.service.VenueService;
 import com.link.cloud.utils.VenueUtils;
 import com.orhanobut.logger.Logger;
 
 
-import java.lang.annotation.Annotation;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import io.reactivex.Observable;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
 import md.com.sdk.MicroFingerVein;
 
 

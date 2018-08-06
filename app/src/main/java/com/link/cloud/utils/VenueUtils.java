@@ -2,17 +2,15 @@ package com.link.cloud.utils;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
 import android.util.Log;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Set;
-import java.util.logging.Logger;
+import com.link.cloud.bean.DownLoadDataBean;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import io.realm.Realm;
+import io.realm.RealmResults;
 import md.com.sdk.MicroFingerVein;
 
 /**
@@ -20,6 +18,8 @@ import md.com.sdk.MicroFingerVein;
  */
 
 public class VenueUtils {
+
+    private Realm realm;
 
     public interface VenueCallBack{
         void modelMsg(String msg);
@@ -55,6 +55,7 @@ public class VenueUtils {
     }
     public  void StopIdenty(){
         bRun=false;
+        realm.close();
         if(mdWorkThread == null){
 
         }else {
@@ -123,6 +124,7 @@ public class VenueUtils {
                     //--------------------------
                     if (img == null) {
                         Log.e(TAG, "get img failed,please try again");
+                        callBack.identifyMsg("取图失败请抬高手指,重试","");
                         // handler.obtainMessage(MSG_SWITCH_POP_CONTENT,false).sendToTarget();
                         continue;
                     }
@@ -143,7 +145,7 @@ public class VenueUtils {
                         //   handler.obtainMessage(MSG_SHOW_LOG,"img quality not good,pleas retry.").sendToTarget();
                         // handler.obtainMessage(MSG_SWITCH_POP_CONTENT,false).sendToTarget();
                         //-----------------------------------
-                        callBack.modelMsg("取图失败请抬高手指,重试");
+                        callBack.identifyMsg("取图失败请抬高手指,重试","");
                         //------------------------------------
                         continue;
                     }
@@ -163,6 +165,7 @@ public class VenueUtils {
                             if (identifyNewImg(img, pos, score)) {//比对及判断得分放到identifyNewImg()内实现
                                 Log.e("\nIdentify success,", "pos=" + pos[0]);
                                 //handler.obtainMessage(MSG_SHOW_LOG,"Identify success,pos="+ pos[0]).sendToTarget();
+
                             } else {
                                 Log.e("Identify fail,", "pos=" + pos[0]);
                                 // handler.obtainMessage(MSG_SHOW_LOG,"Identify fail,pos="+ pos[0]).sendToTarget();
@@ -172,6 +175,7 @@ public class VenueUtils {
                                 //    Log.e(TAG,tips);
                                 //    handler.obtainMessage(MSG_SHOW_LOG,tips).sendToTarget();
                                 //}
+                                callBack.identifyMsg("认证失败","");
                                 //----------------------------------------------------------
                             }
                             while (state == 3 && bRun) {
@@ -180,6 +184,7 @@ public class VenueUtils {
                                 if (!bOpen) {//等待手指拿开的中途设备断开了
                                     Log.e(TAG, "device disconnected when identifying is waiting for finger moving away");
                                     //handler.obtainMessage(MSG_SHOW_LOG,"device disconnected when identifying is waiting for finger moving away").sendToTarget();
+
                                 }
                             }
                             continue;
@@ -255,6 +260,13 @@ public class VenueUtils {
                                         //}
                                         //----------------------------------------------------------
                                         modelImgMng.reset();
+                                        String features = MyUtils.byte2hex(feature);
+                                        Realm.getDefaultInstance().beginTransaction();
+                                        DownLoadDataBean downLoadDataBean = Realm.getDefaultInstance().createObject(DownLoadDataBean.class);
+                                        downLoadDataBean.setUid("dfasdfs");
+                                        downLoadDataBean.setFeature(features);
+                                        Realm.getDefaultInstance().commitTransaction();
+                                        callBack.modelMsg("请稍等...");
                                         bRun = false;
                                     } else {//第三次建模从图片中取特征值无效
                                         modOkProgress = 2;
@@ -268,7 +280,7 @@ public class VenueUtils {
                                     modOkProgress = 2;
                                     if (++tipTimes[1] <= 3) {
                                         // handler.obtainMessage(MSG_SHOW_LOG,"please move away your finger and put the same one for third modeling!!!").sendToTarget();
-                                        callBack.modelMsg("三次数据不同，重新建模");
+                                        callBack.modelMsg("请放置同一根手指");
                                     }
                                     continue;
                                 }
@@ -314,46 +326,35 @@ public class VenueUtils {
 
 
     private boolean identifyNewImg(final byte[] img,int[] pos,float[] score) {
-        final HashMap allFeatures=null;
-        if(allFeatures==null) {
+        realm = Realm.getDefaultInstance();
+        RealmResults<DownLoadDataBean> allFeatures = realm.where(DownLoadDataBean.class).findAll();
+        if(allFeatures.size()==0) {
             Log.e(TAG,"can't identify,because features database is empty!");
             //handler.obtainMessage(MSG_SHOW_LOG,"can't identify,features database is empty!").sendToTarget();
+            callBack.identifyMsg("暂无指静脉数据","");
             return false;
         }
         Log.e(TAG,"try identify new img,total db features counts="+allFeatures.size());
        // handler.obtainMessage(MSG_SHOW_LOG,"try identify new img,total db features counts="+allFeatures.size()).sendToTarget();
         byte[] allFeaturesBytes=new byte[0];
-        List<byte[]> allFeatureList=new ArrayList<byte[]>(allFeatures.values());
+        List<byte[]> allFeatureList=new ArrayList();
+        for(DownLoadDataBean data:allFeatures){
+            allFeatureList.add(MyUtils.hexStringToByte(data.getFeature()));
+        }
         for(byte[] feature:allFeatureList){
             allFeaturesBytes= CommonUtils.byteMerger(allFeaturesBytes,feature);
         }
         boolean identifyResult= MicroFingerVein.fv_index(allFeaturesBytes,allFeatures.size(),img,pos,score);//比对是否通过
         identifyResult=identifyResult&&score[0]>IDENTIFY_SCORE_THRESHOLD;//得分是否达标
         if(identifyResult){//比对通过且得分达标时打印此手指绑定的用户名
-            Set<String> allFeatureKey=allFeatures.keySet();
-            String featureName=(String)allFeatureKey.toArray()[pos[0]];
+            String featureName = allFeatures.get(pos[0]).getUid();
             Log.e(TAG,"identified finger user name："+featureName);
+            callBack.identifyMsg("认证成功",featureName);
            // handler.obtainMessage(MSG_SHOW_LOG,"identified finger user name："+featureName).sendToTarget();
         }
         return identifyResult;
     }
-    private final static int MSG_SWITCH_POP_CONTENT=6;
     private final static float IDENTIFY_SCORE_THRESHOLD=0.63f;//认证通过的得分阈值，超过此得分才认为认证通过；
     private final static float MODEL_SCORE_THRESHOLD=0.4f;//
-    private  boolean checkIsModelRepeatRegister(final byte[] img){
-        final HashMap allFeatures=null;
-        if(allFeatures!=null){
-            int[] pos=new int[1];
-            float[] score=new float[1];
-            byte[] allFeaturesBytes=new byte[0];
-            List<byte[]> allFeatureList=new ArrayList<byte[]>(allFeatures.values());
-            for(byte[] feature:allFeatureList){
-                allFeaturesBytes=CommonUtils.byteMerger(allFeaturesBytes,feature);
-            }
-            boolean identifyResult= MicroFingerVein.fv_index(allFeaturesBytes,allFeatures.size(),img,pos,score);
-            identifyResult=identifyResult&&score[0]>IDENTIFY_SCORE_THRESHOLD;
-            return identifyResult;
-        }
-        return false;
-    }
+
 }

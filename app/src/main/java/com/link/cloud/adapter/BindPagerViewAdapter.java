@@ -33,11 +33,12 @@ import java.util.logging.LogRecord;
  */
 
 public class BindPagerViewAdapter extends PagerAdapter implements View.OnClickListener{
-    String [] keys = new String []{"1","2","3","4","5","6","7","8","9","清空","0","回删"};
+
     ArrayList<TextView> textViews = new ArrayList<>();
     private final StringBuilder builder;
     BindViewListener listener;
     private TextView info_model;
+    private String[] keys;
 
     @Override
     public int getCount() {
@@ -46,7 +47,8 @@ public class BindPagerViewAdapter extends PagerAdapter implements View.OnClickLi
     Activity context;
     public BindPagerViewAdapter(Activity context,BindViewListener listener){
         this.context=context;
-        for(int x=0;x<keys.length;x++){
+        keys = new String []{"1","2","3","4","5","6","7","8","9",context.getString(R.string.clear_all),"0",context.getString(R.string.clear_before)};
+        for(int x = 0; x< keys.length; x++){
             TextView view = new TextView(context);
             view.setGravity(Gravity.CENTER);
             view.setTextColor(context.getResources().getColor(R.color.white));

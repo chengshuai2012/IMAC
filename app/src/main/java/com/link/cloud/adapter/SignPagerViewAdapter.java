@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.link.cloud.R;
 import com.link.cloud.view.CardConfig;
@@ -22,6 +23,7 @@ public class SignPagerViewAdapter extends PagerAdapter {
         return 3;
     }
     Context context;
+    TextView info_model;
     public SignPagerViewAdapter(Context context){
         this.context=context;
     }
@@ -35,6 +37,7 @@ public class SignPagerViewAdapter extends PagerAdapter {
         View view=null;
         if(position==0){
              view = View.inflate(context, R.layout.sign_introduce_item,null);
+            info_model = (TextView) view.findViewById(R.id.info_model);
         }
         if(position==1){
             view = View.inflate(context, R.layout.card_container,null);
@@ -72,6 +75,9 @@ public class SignPagerViewAdapter extends PagerAdapter {
     public void destroyItem(ViewGroup container, int position, Object object) {
         container.removeView((View) object);
 
+    }
+    public void setIdentyMsg(String msg){
+        info_model.setText(msg);
     }
 
 }

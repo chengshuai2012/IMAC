@@ -78,7 +78,7 @@ public class EntranceActivity extends BaseActivity implements SplashContract.Vie
 
     @Override
     public void SyncSuccess() {
-        showToast("同步成功");
+        showToast(getResources().getString(R.string.sync_success));
     }
 
     @Override
@@ -89,7 +89,7 @@ public class EntranceActivity extends BaseActivity implements SplashContract.Vie
     @Override
     public void NetWorkError(Boolean isNet, Throwable e) {
         if (isNet) {
-            showToast("网络连接异常,请检查设备网络");
+            showToast(getString(R.string.net_error));
         } else {
             showToast(e.getMessage());
         }

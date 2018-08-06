@@ -40,7 +40,7 @@ public class SplashPresenter implements SplashContract.Presenter {
                     protected void onSuccees(final BaseEntity<ArrayList<DownLoadDataBean>> t) throws Exception {
                         Logger.e("start"+t.getData().size()+">>>>>>");
                         long l = System.currentTimeMillis();
-                        Realm mRealm=Realm.getDefaultInstance();
+                        final Realm mRealm=Realm.getDefaultInstance();
                         final Number id = mRealm.where(DownLoadDataBean.class).max("id");
                         Logger.e(id+"" );
                         mRealm.executeTransactionAsync(new Realm.Transaction() {
@@ -48,7 +48,6 @@ public class SplashPresenter implements SplashContract.Presenter {
                             public void execute(Realm realm) {
                                 for (int x = 0; x < t.getData().size(); x++) {
                                     DownLoadDataBean downLoadDataBean = t.getData().get(x);
-                                    downLoadDataBean.setId(id.intValue()+x);
                                     realm.copyToRealm(downLoadDataBean);
                                 }
                             }
@@ -58,6 +57,7 @@ public class SplashPresenter implements SplashContract.Presenter {
                             public void onSuccess() {
                                 Logger.e("success");
                                 view.SyncSuccess();
+                                mRealm.close();
                             }
                         }, new Realm.Transaction.OnError() {
                             @Override
