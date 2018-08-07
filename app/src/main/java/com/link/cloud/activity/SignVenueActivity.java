@@ -217,7 +217,7 @@ public class SignVenueActivity extends BaseActivity implements ViewPager.OnPageC
 
     @Override
     public void modelMsg(final String msg) {
-        if(signViewpager.getCurrentItem()==1) {
+        if(signViewpager.getCurrentItem()==0) {
             runOnUiThread(
                     new Runnable() {
                         @Override
@@ -228,7 +228,14 @@ public class SignVenueActivity extends BaseActivity implements ViewPager.OnPageC
     }
 
     @Override
-    public void identifyMsg(String msg, String uid) {
-
+    public void identifyMsg(final String msg, final String uid) {
+        if(signViewpager.getCurrentItem()==0) {
+            runOnUiThread(
+                    new Runnable() {
+                        @Override
+                        public void run() {
+                            signPagerViewAdapter.setIdentyMsg(uid);
+                        }});
+        }
     }
 }

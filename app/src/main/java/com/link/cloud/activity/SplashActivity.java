@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 
+
 import com.link.cloud.R;
 import com.link.cloud.base.BaseActivity;
 import com.link.cloud.contract.SplashContract;
@@ -40,7 +41,7 @@ public class SplashActivity extends BaseActivity implements SplashContract.View 
     @Override
     public void NetWorkError(Boolean isNet, Throwable e) {
         if (isNet) {
-            showToast(getString(R.id.net_error));
+            showToast(getResources().getString(R.string.net_error));
         } else {
             showToast(e.getMessage());
         }

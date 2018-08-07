@@ -1,6 +1,8 @@
 package com.link.cloud.activity;
 
 import com.link.cloud.base.BaseActivity;
+import com.orhanobut.logger.Logger;
+
 
 /**
  * Created by 49488 on 2018/7/22.

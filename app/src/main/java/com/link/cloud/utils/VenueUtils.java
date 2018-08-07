@@ -55,7 +55,7 @@ public class VenueUtils {
     }
     public  void StopIdenty(){
         bRun=false;
-        realm.close();
+
         if(mdWorkThread == null){
 
         }else {
@@ -266,6 +266,7 @@ public class VenueUtils {
                                         downLoadDataBean.setUid("dfasdfs");
                                         downLoadDataBean.setFeature(features);
                                         Realm.getDefaultInstance().commitTransaction();
+                                        Realm.getDefaultInstance().close();
                                         callBack.modelMsg("请稍等...");
                                         bRun = false;
                                     } else {//第三次建模从图片中取特征值无效
@@ -351,6 +352,9 @@ public class VenueUtils {
             Log.e(TAG,"identified finger user name："+featureName);
             callBack.identifyMsg("认证成功",featureName);
            // handler.obtainMessage(MSG_SHOW_LOG,"identified finger user name："+featureName).sendToTarget();
+        }
+        if(realm!=null){
+            realm.close();
         }
         return identifyResult;
     }
